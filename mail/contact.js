@@ -1,46 +1,31 @@
 $(function () {
 
-    $("#contactForm input, #contactForm textarea").jqBootstrapValidation({
+    $("#quoteForm input, #quoteForm textarea, #quoteForm select").jqBootstrapValidation({
         preventSubmit: true,
         submitError: function ($form, event, errors) {
         },
         submitSuccess: function ($form, event) {
             event.preventDefault();
-            var name = $("input#name").val();
-            var email = $("input#email").val();
-            var subject = $("input#subject").val();
-            var message = $("textarea#message").val();
 
-            $this = $("#sendMessageButton");
+            var $this = $("#sendMessageButton");
             $this.prop("disabled", true);
 
+            // Using Formspree for GitLab Pages compatibility (no PHP needed)
             $.ajax({
-                url: "contact.php",
+                url:"https://formspree.io/f/xeezdgln",
                 type: "POST",
-                data: {
-                    name: name,
-                    email: email,
-                    subject: subject,
-                    message: message
-                },
+                data: $form.serialize(),
+                dataType: "json",
                 cache: false,
                 success: function () {
-                    $('#success').html("<div class='alert alert-success'>");
-                    $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-                            .append("</button>");
-                    $('#success > .alert-success')
-                            .append("<strong>Your message has been sent. </strong>");
-                    $('#success > .alert-success')
-                            .append('</div>');
-                    $('#contactForm').trigger("reset");
+                    window.location.href = "thank-you.html";
                 },
                 error: function () {
                     $('#success').html("<div class='alert alert-danger'>");
                     $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-                            .append("</button>");
-                    $('#success > .alert-danger').append($("<strong>").text("Sorry " + name + ", it seems that our mail server is not responding. Please try again later!"));
+                        .append("</button>");
+                    $('#success > .alert-danger').append($("<strong>").text("Es gab ein Problem beim Senden Ihrer Nachricht. Bitte versuchen Sie es später noch einmal."));
                     $('#success > .alert-danger').append('</div>');
-                    $('#contactForm').trigger("reset");
                 },
                 complete: function () {
                     setTimeout(function () {
@@ -60,6 +45,3 @@ $(function () {
     });
 });
 
-$('#name').focus(function () {
-    $('#success').html('');
-});
