@@ -45,7 +45,7 @@ $log_header = "To: $to\nSubject: $subject\n";
 file_put_contents($log_file, $log_header . $body);
 
 // Real Mail attempt (will work on your live hosting later)
-$from_email = "info@wyss-autokauf.ch";
+$from_email = "info@auto-wiss.ch";
 $headers = "From: $from_email\r\n";
 $headers .= "Reply-To: " . (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) ? $_POST['email'] : $from_email) . "\r\n";
 
