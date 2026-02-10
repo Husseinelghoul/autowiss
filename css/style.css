@@ -4,6 +4,7 @@
 html {
     scroll-behavior: smooth;
 }
+
 body {
     color: #444444;
     font-weight: 400;
@@ -236,11 +237,7 @@ a:focus {
         text-align: center;
     }
 }
-@media (max-width: 768px) {
-    .carousel {
-      display: none;
-    }
-  }
+
 
 
 /**********************************/
@@ -324,7 +321,8 @@ a:focus {
     }
 
     .nav-bar .btn {
-        display: none;
+        display: block;
+        margin: 10px 0;
     }
 }
 
@@ -2075,6 +2073,7 @@ a:focus {
 .footer .copyright p a:hover {
     color: #ffffff;
 }
+
 /* icons */
 .icon {
     width: 100px;
@@ -2097,25 +2096,32 @@ a:focus {
 
 .icon-accident {
     background-image: url('/img/accident.svg');
-  }
-.icon-calendar{
+}
+
+.icon-calendar {
     background-image: url('/img/calendar.png');
 }
-.icon-money{
+
+.icon-money {
     background-image: url('/img/money.png');
 }
-.icon-document{
+
+.icon-document {
     background-image: url('/img/document.png');
 }
-.icon-person{
+
+.icon-person {
     background-image: url('/img/person.png');
 }
-.icon-ship{
+
+.icon-ship {
     background-image: url('/img/ship.png');
 }
-.icon-car{
+
+.icon-car {
     background-image: url('/img/car.png');
 }
-.icon-phone{
+
+.icon-phone {
     background-image: url('/img/phone.png');
 }
