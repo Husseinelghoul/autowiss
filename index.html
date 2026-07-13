@@ -1,540 +1,487 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
     <meta charset="utf-8">
-    <title>Wiss Autokauf - Autoankauf und Export</title>
+    <title>Auto Wiss – Autoankauf, Export & Verkauf in der Schweiz</title>
     <link rel="icon" href="img/icon.webp">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Wiss Autokauf" name="keywords">
-    <meta content="Autoankauf und Export" name="description">
+    <meta name="description" content="Auto Wiss kauft Ihr Auto in jedem Zustand – sofort Bargeld, wir kommen zu Ihnen und übernehmen die Ab- und Ummeldung. Autoankauf, Export und Verkauf in der ganzen Schweiz, 24/7.">
+    <meta name="theme-color" content="#0E1A30">
+    <link rel="canonical" href="https://autowiss.ch/">
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-    <!-- fontawsome icons -->
-    <script src="https://kit.fontawesome.com/54ea42d04d.js" crossorigin="anonymous"></script>
+    <!-- Open Graph / WhatsApp / social sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Auto Wiss">
+    <meta property="og:locale" content="de_CH">
+    <meta property="og:title" content="Auto Wiss – Autoankauf, Export & Verkauf in der Schweiz">
+    <meta property="og:description" content="Wir kaufen Ihr Auto in jedem Zustand, zahlen sofort Bargeld und übernehmen die Formalitäten. 24/7 erreichbar.">
+    <meta property="og:url" content="https://autowiss.ch/">
+    <meta property="og:image" content="https://autowiss.ch/img/agreement.jpeg">
+    <meta name="twitter:card" content="summary_large_image">
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,600&display=swap" rel="stylesheet">
 
-    <!-- CSS Libraries -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <!-- Design system -->
+    <link href="css/wyss.css" rel="stylesheet">
 
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <!-- Structured data for local SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "name": "Auto Wiss",
+      "url": "https://autowiss.ch/",
+      "image": "https://autowiss.ch/img/agreement.jpeg",
+      "email": "info@auto-wiss.ch",
+      "telephone": "+41789008888",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Kantonsstrasse 7",
+        "postalCode": "6232",
+        "addressLocality": "Geuensee",
+        "addressRegion": "LU",
+        "addressCountry": "CH"
+      },
+      "areaServed": { "@type": "Country", "name": "Schweiz" },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      },
+      "sameAs": [ "https://www.youtube.com/channel/UCV42KtFRrKarhmBEW4Ojwgg" ]
+    }
+    </script>
 
+    <style>
+        /* ---------- Page-specific: homepage sections ---------- */
+        .ico { font-size: 1em; }
+
+        /* Hero */
+        .hero { position: relative; padding: clamp(2.5rem, 6vw, 4.5rem) 0 0; }
+        .hero__glow { position: absolute; top: -8%; right: -6%; width: 60vw; height: 60vw; max-width: 760px; max-height: 760px; background: radial-gradient(circle, rgba(228,251,80,0.15), transparent 62%); pointer-events: none; z-index: 0; }
+        .hero__grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 3rem; align-items: end; }
+        .hero__grid > * { min-width: 0; }
+        .hero h1, .hero__sub { overflow-wrap: break-word; }
+        .hero .eyebrow { display: inline-block; margin-bottom: 1.5rem; }
+        .hero h1 .out { color: transparent; -webkit-text-stroke: 1.6px var(--paper); }
+        .hero__sub { max-width: 44ch; margin: 1.7rem 0 2.1rem; }
+        .hero__sub b { color: var(--paper); font-weight: 700; }
+        .hero__actions { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+        .hero__trust { display: flex; flex-wrap: wrap; gap: 0.9rem 1.8rem; margin-top: 2.4rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+        .hero__trust div { display: inline-flex; align-items: center; gap: 0.55rem; font-family: var(--f-label); font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.04em; color: #cfd4de; }
+        .hero__trust .ico { color: var(--acid); }
+
+        .plate { background: var(--ink-2); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+        .plate__img { position: relative; aspect-ratio: 4 / 3.3; }
+        .plate__img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05) brightness(0.92); transition: filter 0.6s var(--ease), transform 0.9s var(--ease); }
+        .plate:hover .plate__img img { filter: grayscale(0); transform: scale(1.04); }
+        .plate__scrim { position: absolute; inset: 0; z-index: 2; background: linear-gradient(180deg, transparent 42%, rgba(14,26,48,0.88)); }
+        .plate__tag { position: absolute; top: 12px; left: 12px; z-index: 3; font-family: var(--f-label); font-weight: 700; font-size: 0.68rem; letter-spacing: 0.12em; background: var(--acid); color: var(--ink); padding: 4px 10px; border-radius: 3px; }
+        .plate__stat { position: absolute; left: 16px; bottom: 14px; z-index: 3; }
+        .plate__stat b { font-family: var(--f-display); font-size: 2.7rem; color: var(--acid); display: block; line-height: 0.9; }
+        .plate__stat span { font-family: var(--f-label); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: #cfd4de; }
+        .plate__foot { display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 1rem; font-family: var(--f-label); font-size: 0.7rem; letter-spacing: 0.08em; color: var(--steel); }
+        .plate__foot .ch { border: 1px solid var(--line); padding: 3px 8px; border-radius: 3px; color: var(--paper); }
+        .plate__foot .ch b { color: var(--acid); }
+
+        /* Marquee band */
+        .band { margin-top: clamp(2.5rem, 5vw, 4rem); border-block: 1px solid var(--line); overflow: hidden; white-space: nowrap; }
+        .band__track { display: inline-flex; align-items: center; animation: marq 30s linear infinite; will-change: transform; }
+        .band:hover .band__track { animation-play-state: paused; }
+        .band__track b { font-family: var(--f-display); font-size: clamp(1.5rem, 3.2vw, 2.7rem); text-transform: uppercase; padding: 0.65rem 1.4rem; color: var(--paper); }
+        .band__track b:nth-child(even) { color: transparent; -webkit-text-stroke: 1.3px var(--steel); }
+        .band__track i { color: var(--acid); font-style: normal; font-size: 0.7em; padding: 0 0.2rem; }
+        @keyframes marq { to { transform: translateX(-50%); } }
+
+        /* Value grid */
+        .vgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line-ink); border: 1px solid var(--line-ink); border-radius: var(--radius); overflow: hidden; }
+        .vcard { background: var(--paper); padding: 2rem 1.6rem; min-height: 210px; display: flex; flex-direction: column; gap: 1.4rem; transition: background 0.3s, color 0.3s; }
+        .vcard__n { font-family: var(--f-label); font-size: 0.78rem; letter-spacing: 0.1em; color: var(--steel-2); }
+        .vcard h3 { font-family: var(--f-body); font-weight: 800; font-size: 1.2rem; line-height: 1.1; margin-bottom: 0.45rem; }
+        .vcard p { font-size: 0.92rem; color: var(--steel-2); }
+        .vcard:hover { background: var(--ink); color: var(--paper); }
+        .vcard:hover .vcard__n { color: var(--acid); }
+        .vcard:hover p { color: #b8c0cf; }
+
+        /* Services */
+        .svc { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.3rem; }
+        .scard { position: relative; overflow: hidden; border-radius: var(--radius); min-height: 330px; display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; isolation: isolate; border: 1px solid var(--line); }
+        .scard .media { position: absolute; inset: 0; z-index: -2; }
+        .scard .media img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) brightness(0.4) contrast(1.05); transition: transform 1s var(--ease), filter 0.6s; }
+        .scard::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(14,26,48,0.1), rgba(14,26,48,0.92)); }
+        .scard:hover .media img { transform: scale(1.06); filter: grayscale(0.35) brightness(0.5); }
+        .scard__no { position: absolute; top: 1.4rem; right: 1.6rem; font-family: var(--f-label); color: var(--acid); font-size: 0.78rem; letter-spacing: 0.1em; }
+        .scard h3 { margin-bottom: 0.55rem; }
+        .scard p { max-width: 42ch; color: #d5dae2; font-size: 0.94rem; }
+        .scard .more { margin-top: 1.1rem; display: inline-flex; gap: 0.4rem; align-items: center; font-family: var(--f-label); font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--acid); }
+        .scard .more .arw { transition: transform 0.25s var(--ease); }
+        .scard:hover .more .arw { transform: translateX(4px); }
+        .scard.wide { grid-column: span 2; min-height: 250px; }
+
+        /* Process */
+        .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; counter-reset: s; }
+        .step { border-top: 3px solid var(--ink); padding-top: 1.3rem; position: relative; }
+        .step__n { font-family: var(--f-display); font-size: clamp(3.2rem, 8vw, 6rem); line-height: 0.8; color: var(--ink); }
+        .step__n::before { counter-increment: s; content: "0" counter(s); }
+        .step h3 { font-family: var(--f-body); font-weight: 800; font-size: 1.35rem; margin: 0.5rem 0 0.4rem; line-height: 1.1; }
+        .step p { color: var(--steel-2); max-width: 34ch; }
+        .step .badge { position: absolute; top: 1.1rem; right: 0; font-family: var(--f-label); font-size: 0.68rem; background: var(--ink); color: var(--acid); padding: 3px 9px; border-radius: 3px; }
+
+        /* Stats */
+        .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+        .stat { padding: 2.3rem 1.5rem; background: var(--ink); }
+        .stat b { font-family: var(--f-display); font-size: clamp(2.8rem, 5.5vw, 4.4rem); color: var(--paper); display: block; line-height: 0.85; }
+        .stat b .s { color: var(--acid); }
+        .stat span { font-family: var(--f-label); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--steel); display: block; margin-top: 0.7rem; }
+
+        /* Testimonials */
+        .tgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.3rem; }
+        .tcard { border: 1px solid var(--line-ink); border-radius: var(--radius); padding: 1.9rem; background: #fff; display: flex; flex-direction: column; gap: 1rem; }
+        .stars { display: inline-flex; gap: 3px; color: var(--ink); }
+        .stars iconify-icon { font-size: 17px; }
+        .tcard p { font-size: 1rem; color: #26261f; flex-grow: 1; }
+        .who { display: flex; align-items: center; gap: 0.9rem; margin-top: 0.4rem; }
+        .who .media { width: 46px; height: 46px; border-radius: 50%; flex: 0 0 auto; border: 2px solid var(--ink); }
+        .who .media img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); }
+        .who b { display: block; font-weight: 800; }
+        .who span { font-family: var(--f-label); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--steel-2); }
+
+        /* Partners — full-colour logos on white, contained (not cropped) */
+        .partners { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; }
+        .pcard { display: flex; align-items: center; gap: 1.3rem; background: #fff; border: 1px solid var(--line-ink); border-radius: var(--radius); padding: 1.4rem 1.6rem; transition: transform 0.3s var(--ease), border-color 0.3s, box-shadow 0.3s; }
+        .pcard:hover { transform: translateY(-4px); border-color: transparent; box-shadow: 0 14px 30px rgba(14,26,48,0.12); }
+        .pcard__logo { width: 84px; height: 60px; flex: 0 0 auto; display: grid; place-items: center; }
+        .pcard__logo img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+        .pcard b { font-family: var(--f-body); font-weight: 800; font-size: 1.05rem; display: block; }
+        .pcard span { font-family: var(--f-label); font-size: 0.7rem; color: var(--steel-2); text-transform: uppercase; letter-spacing: 0.05em; }
+
+        /* CTA */
+        .cta { background: var(--acid); color: var(--ink); }
+        .cta__in { display: grid; grid-template-columns: 1.35fr 1fr; gap: 2.5rem; align-items: center; }
+        .cta .eyebrow { color: rgba(14,26,48,0.55); display: block; margin-bottom: 1rem; }
+        .cta h2 { color: var(--ink); }
+        .cta p { max-width: 40ch; margin-top: 1rem; font-weight: 600; }
+        .cta__acts { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
+        .cta__acts .btn { width: 100%; }
+        .cta .phone { font-family: var(--f-display); font-size: clamp(1.9rem, 3.6vw, 3rem); display: inline-flex; align-items: center; gap: 0.55rem; color: var(--ink); }
+        .cta .phone .ico { font-size: 0.8em; }
+        .cta .mailto { font-family: var(--f-label); font-weight: 700; font-size: 0.85rem; }
+
+        @media (max-width: 900px) {
+            .hero__grid { grid-template-columns: 1fr; }
+            .hero__aside { max-width: 420px; }
+            .vgrid { grid-template-columns: repeat(2, 1fr); }
+            .svc { grid-template-columns: 1fr; }
+            .scard.wide { grid-column: auto; }
+            .steps { grid-template-columns: 1fr; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .tgrid { grid-template-columns: 1fr; }
+            .partners { grid-template-columns: 1fr; }
+            .cta__in { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 560px) {
+            .vgrid, .stats { grid-template-columns: 1fr; }
+            .hero__actions { flex-direction: column; align-items: stretch; }
+            .hero__actions .btn { width: 100%; }
+            .hero__trust { gap: 0.7rem 1.4rem; }
+            .hero__trust div { font-size: 0.72rem; }
+            .scard { min-height: 280px; padding: 1.5rem; }
+            .scard.wide { min-height: 220px; }
+            .plate__stat b { font-size: 2.2rem; }
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Top Bar Start -->
-    <div class="top-bar">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-4 col-md-12">
-                    <div class="logo">
-                        <a href="index.html">
-                            <h1>Wiss<span>Autokauf</span></h1>
-                            <!-- <img src="img/logo.jpg" alt="Logo"> -->
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-8 col-md-7 d-none d-lg-block">
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="top-bar-item">
-                                <div class="top-bar-icon">
-                                    <i class="far fa-clock"></i>
-                                </div>
-                                <div class="top-bar-text">
-                                    <h3>Öffnungszeiten</h3>
-                                    <p>24/7</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="top-bar-item">
-                                <div class="top-bar-icon">
-                                    <i class="fa fa-phone-alt"></i>
-                                </div>
-                                <div class="top-bar-text">
-                                    <h3>Rufen Sie uns an</h3>
-                                    <a href="tel:+41789008888">078 900 88 88</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="top-bar-item">
-                                <div class="top-bar-icon">
-                                    <i class="far fa-envelope"></i>
-                                </div>
-                                <div class="top-bar-text">
-                                    <h3>Email</h3>
-                                    <a href="mailto:info@auto-wiss.ch">info@auto-wiss.ch</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Top Bar End -->
 
-    <!-- Nav Bar Start -->
-    <div class="nav-bar">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-                <a href="#" class="navbar-brand">Menü</a>
-                <a class="btn btn-custom d-lg-none" href="booking.html"
-                    style="margin-right: 15px; padding: 8px 15px; font-size: 14px;">Offerte</a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <!-- SVG icon sprite -->
 
-                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                    <div class="navbar-nav mr-auto">
-                        <a href="index.html" class="nav-item nav-link active">Heim</a>
-                        <a href="#about" class="nav-item nav-link">Über Uns</a>
-                        <a href="#service" class="nav-item nav-link">Dienstleistungen</a>
-                        <a href="#partner" class="nav-item nav-link">Partners</a>
-                        <!-- <a href="#footer" class="nav-item nav-link">Kontakt</a> -->
-                    </div>
-                    <div class="ml-auto">
-                        <a class="btn btn-custom" href="booking.html">Offerte erhalten</a>
-                    </div>
-                    <div class="ml-auto">
-                        <a class="btn btn-custom" href="#footer">Kontakt</a>
-                    </div>
-                </div>
+    <!-- Header -->
+    <header class="site-head" id="top">
+        <div class="wrap nav">
+            <a href="#top" class="brand" aria-label="Auto Wiss Startseite">
+                <span class="brand__mark">W</span>
+                <span class="brand__name">AUTO<span>WISS</span></span>
+            </a>
+            <nav class="nav__links" id="menu">
+                <a href="#warum" class="lnk">Warum Wiss</a>
+                <a href="#leistungen" class="lnk">Leistungen</a>
+                <a href="#ablauf" class="lnk">Ablauf</a>
+                <a href="#stimmen" class="lnk">Stimmen</a>
+                <a href="#kontakt" class="lnk">Kontakt</a>
+                <a href="tel:+41789008888" class="btn btn--ghost nav__call">078 900 88 88</a>
+                <a href="offerte.html" class="btn">Offerte erhalten</a>
             </nav>
-        </div>
-    </div>
-    <!-- Nav Bar End -->
-
-
-    <!-- Carousel Start -->
-    <div class="carousel" data-lg-show="false">
-        <div class="container-fluid">
-            <div class="owl-carousel">
-                <div class="carousel-item">
-                    <div class="carousel-img">
-                        <img src="img/agreement.jpeg" alt="Image">
-                    </div>
-                    <div class="carousel-text">
-                        <h3>Wiss Autoankauf</h3>
-                        <h1>Schnelles Bargeld für Ihr Auto: Jeder Zustand, Überall.</h1>
-                        <p>
-                            Lassen Sie den Zustand oder den Standort Ihres Autos Sie nicht zurückhalten. Wir kaufen
-                            Autos in jedem Zustand und von überall und zahlen schnell Bargeld.
-                        </p>
-                        <a class="btn btn-custom" href="booking.html">Offerte erhalten</a>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="carousel-img">
-                        <img src="img/other-agents.jpeg" alt="Image">
-                    </div>
-                    <div class="carousel-text">
-                        <h3>Wiss Autoankauf</h3>
-                        <h1>Verkaufen, Kaufen oder Tauschen: Ihr Alles-in-einem Autohändler!</h1>
-                        <p>
-                            Möchten Sie Ihr Auto verkaufen? Wir kommen zu Ihnen, kümmern uns um alle Details und finden
-                            für Sie das beste Angebot. Möchten Sie kaufen oder tauschen? Wir haben eine große Auswahl an
-                            neuen und gebrauchten Autos zur Auswahl.
-                        </p>
-                        <a class="btn btn-custom" href="booking.html">Offerte erhalten</a>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="carousel-img">
-                        <img src="img/shipping.jpeg" alt="Image">
-                    </div>
-                    <div class="carousel-text">
-                        <h3>Wiss Autoankauf</h3>
-                        <h1>Vereinfachen Sie den Autohandel über Grenzen hinweg!</h1>
-                        <p>
-                            Der Autohandel über Grenzen hinweg kann kompliziert sein, aber wir machen es einfach! Wir
-                            bieten Autoexport- und -importdienstleistungen von und nach der Schweiz an, damit Sie sich
-                            auf die Suche nach dem Auto Ihrer Träume konzentrieren können.
-                        </p>
-                        <a class="btn btn-custom" href="booking.html">Offerte erhalten</a>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="carousel-img">
-                        <img src="img/vintage.jpeg" alt="Image">
-                    </div>
-                    <div class="carousel-text">
-                        <h3>Wiss Autoankauf</h3>
-                        <h1>Vintage-Auto-Enthusiasten: Kaufen und Verkaufen Sie mit Leichtigkeit!</h1>
-                        <p>
-                            Vintage-Auto-Sammler, wir haben Sie abgedeckt! Kaufen oder verkaufen Sie Ihr Vintage-Auto
-                            einfach und treten Sie unserer Community von Enthusiasten bei.
-                        </p>
-                        <a class="btn btn-custom" href="booking.html">Offerte erhalten</a>
-                    </div>
-                </div>
+            <div class="nav__cta">
+                <a href="tel:+41789008888" class="btn btn--ghost" style="padding:0.6rem 0.95rem">078 900 88 88</a>
+                <button class="burger" id="burger" aria-label="Menü öffnen" title="Menü" aria-expanded="false"><span></span><span></span><span></span></button>
             </div>
         </div>
-    </div>
-    <!-- Carousel End -->
+    </header>
 
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero__glow"></div>
+        <div class="wrap hero__grid">
+            <div class="hero__main">
+                <span class="eyebrow rv">Autoankauf · Export · Geuensee</span>
+                <h1 class="h-hero rv" style="transition-delay:.05s">
+                    Ihr Auto.<br>
+                    <span class="acid">Sofort Bargeld.</span><br>
+                    <span class="out">Überall.</span>
+                </h1>
+                <p class="hero__sub lead rv" style="transition-delay:.12s">
+                    Wir kaufen Ihr Auto in <b>jedem Zustand</b>, kommen zu Ihnen und zahlen bar vor Ort.
+                    Unfall, hohe Kilometer, defekt — egal. Die Ab- und Ummeldung übernehmen wir.
+                </p>
+                <div class="hero__actions rv" style="transition-delay:.18s">
+                    <a href="offerte.html" class="btn">Kostenlose Offerte <span class="arw">→</span></a>
+                    <a href="tel:+41789008888" class="btn btn--ghost">Jetzt anrufen</a>
+                </div>
+                <div class="hero__trust rv" style="transition-delay:.24s">
+                    <div><iconify-icon class="ico" icon="tabler:check" aria-hidden="true"></iconify-icon> Bargeld vor Ort</div>
+                    <div><iconify-icon class="ico" icon="tabler:check" aria-hidden="true"></iconify-icon> 24/7 erreichbar</div>
+                    <div><iconify-icon class="ico" icon="tabler:check" aria-hidden="true"></iconify-icon> Ab- &amp; Ummeldung inklusive</div>
+                    <div><iconify-icon class="ico" icon="tabler:check" aria-hidden="true"></iconify-icon> Ganze Schweiz</div>
+                </div>
+            </div>
 
-    <!-- About Start -->
-    <div id="about" class="about">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="about-img">
-                        <img src="img/car-selling.jpeg" alt="Image">
+            <aside class="hero__aside rv" style="transition-delay:.15s">
+                <div class="plate">
+                    <div class="plate__img media">
+                        <span class="plate__tag">Bargeld sofort</span>
+                        <span class="plate__scrim"></span>
+                        <img src="img/agreement.jpeg" alt="Handschlag beim sofortigen Autoankauf durch Auto Wiss" fetchpriority="high" decoding="async">
+                        <div class="plate__stat"><b><span data-count="25" data-suffix="+">0</span></b><span>Jahre Erfahrung</span></div>
+                    </div>
+                    <div class="plate__foot">
+                        <span class="ch"><b>CH</b> · AUTO WISS</span>
+                        <span>LU · 6232</span>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="section-header text-left">
-                        <p>ÜBER UNS</p>
-                        <h2>Problemloser Autoverkauf und mehr!</h2>
-                    </div>
-                    <div class="about-content">
-                        <p>
-                            Möchten Sie Ihr Auto verkaufen, aber sich nicht mit der An- und Abmeldung herumschlagen?
-                            Suchen Sie nicht weiter! Wir kommen zu Ihnen, kaufen Ihr Auto, kümmern uns um die
-                            Formalitäten und zahlen Ihnen das Bargeld direkt vor Ort aus. Ob Ihr Auto hohe
-                            Kilometerleistung, Schäden oder einen Unfall hat, wir kaufen es von Ihnen, ohne Fragen zu
-                            stellen. Benötigen Sie ein neues Auto? Wir können jedes Modell von überall besorgen und Ihr
-                            Auto sogar an ein neues Ziel exportieren. Und für Vintage-Auto-Enthusiasten verkaufen und
-                            kaufen wir auch Vintage-Autos! Lassen Sie sich nicht vom Autoverkauf stressen - kontaktieren
-                            Sie uns noch heute für eine problemlose Erfahrung.
-                        </p>
-                        <ul>
-                            <li><i class="far fa-check-circle"></i>Autos in jedem Zustand kaufen.</li>
-                            <li><i class="far fa-check-circle"></i>Neue und gebrauchte Autos verkaufen.</li>
-                            <li><i class="far fa-check-circle"></i>Autos in die und aus der Schweiz exportieren.</li>
-                            <li><i class="far fa-check-circle"></i>An- und Abmeldung durchführen.</li>
-                        </ul>
-                        <a class="btn btn-custom" href="#service">Mehr erfahren</a>
-                    </div>
-                </div>
+            </aside>
+        </div>
+
+        <div class="band" aria-hidden="true">
+            <div class="band__track">
+                <b>Autoankauf</b><i>◆</i><b>Export</b><i>◆</i><b>Verkauf</b><i>◆</i><b>Oldtimer</b><i>◆</i><b>Import</b><i>◆</i><b>Bargeld</b><i>◆</i><b>Autoankauf</b><i>◆</i><b>Export</b><i>◆</i><b>Verkauf</b><i>◆</i><b>Oldtimer</b><i>◆</i><b>Import</b><i>◆</i><b>Bargeld</b><i>◆</i>
             </div>
         </div>
-    </div>
-    <!-- About End -->
+    </section>
 
-
-    <!-- Service Start -->
-    <div id="service" class="service">
-        <div class="container">
-            <div class="section-header text-center">
-                <p>Was machen wir?</p>
-                <h2>Premium Autohaus-Service</h2>
+    <!-- Why -->
+    <section id="warum" class="pad light">
+        <div class="wrap">
+            <div class="sec-head rv">
+                <div class="sec-head__t">
+                    <span class="eyebrow">Warum Auto Wiss</span>
+                    <h2 class="h-2">Problemloser Verkauf. Kein Papierkram.</h2>
+                </div>
+                <p>Sie organisieren nichts. Wir kommen, bewerten, kaufen und erledigen die Formalitäten — Sie halten das Bargeld in der Hand.</p>
             </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="service-item">
-                        <i class="icon icon-calendar"></i>
-                        <h3>Wir kaufen Autos jederzeit und in jedem Zustand!</h3>
-                        <p>Möchten Sie den besten Wert für Ihr Auto erzielen? Suchen Sie nicht weiter! Wir bieten die
-                            höchsten Preise auf dem Markt für Ihr Auto an.</p>
-                    </div>
+            <div class="vgrid rv">
+                <div class="vcard"><span class="vcard__n">01</span><div><h3>Jeder Zustand</h3><p>Unfall, hohe Kilometer, Motorschaden oder defekt — wir kaufen ohne Fragen.</p></div></div>
+                <div class="vcard"><span class="vcard__n">02</span><div><h3>Wir kommen zu Ihnen</h3><p>Kostenlose Abholung in der ganzen Schweiz. Sie müssen nirgends hinfahren.</p></div></div>
+                <div class="vcard"><span class="vcard__n">03</span><div><h3>Bargeld vor Ort</h3><p>Fairer Preis, sofortige Auszahlung. Kein Warten, keine Ausreden.</p></div></div>
+                <div class="vcard"><span class="vcard__n">04</span><div><h3>Formalitäten inklusive</h3><p>Ab- und Ummeldung übernehmen wir vollständig für Sie.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="leistungen" class="pad">
+        <div class="wrap">
+            <div class="sec-head rv">
+                <div class="sec-head__t">
+                    <span class="eyebrow">Leistungen</span>
+                    <h2 class="h-2">Alles rund ums Auto</h2>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="service-item">
-                        <i class="icon icon-money"></i>
-                        <h3>Erhalten Sie heute Top-Dollar für Ihr Auto!</h3>
-                        <p>Möchten Sie den besten Wert für Ihr Auto erzielen? Suchen Sie nicht weiter! Wir bieten die
-                            höchsten Preise auf dem Markt für Ihr Auto an.</p>
-                    </div>
+                <p>Ankauf, Verkauf, Export und Import — ein Ansprechpartner für den gesamten Autohandel über Grenzen hinweg.</p>
+            </div>
+            <div class="svc">
+                <article class="scard rv">
+                    <div class="media"><img src="img/car-selling.jpeg" alt="Autoankauf bei Auto Wiss" loading="lazy" decoding="async"></div>
+                    <span class="scard__no">01</span>
+                    <h3 class="h-3">Autoankauf</h3>
+                    <p>Wir kaufen Ihr Auto in jedem Zustand zum Bestpreis — sofort, unkompliziert und bar auf die Hand.</p>
+                    <a href="offerte.html" class="more">Offerte erhalten <span class="arw">→</span></a>
+                </article>
+                <article class="scard rv" style="transition-delay:.08s">
+                    <div class="media"><img src="img/other-agents.jpeg" alt="Auto kaufen und verkaufen bei Auto Wiss" loading="lazy" decoding="async"></div>
+                    <span class="scard__no">02</span>
+                    <h3 class="h-3">Verkauf &amp; Tausch</h3>
+                    <p>Grosse Auswahl an Neu- und Occasionsfahrzeugen. Probefahrten inklusive, Inzahlungnahme möglich.</p>
+                    <a href="#kontakt" class="more">Kontakt aufnehmen <span class="arw">→</span></a>
+                </article>
+                <article class="scard wide rv">
+                    <div class="media"><img src="img/shipping.jpeg" alt="Autoexport und -import von und in die Schweiz" loading="lazy" decoding="async"></div>
+                    <span class="scard__no">03</span>
+                    <h3 class="h-3">Export &amp; Import</h3>
+                    <p>Autohandel über Grenzen hinweg — wir exportieren und importieren Fahrzeuge von und in die Schweiz und erledigen die gesamte Abwicklung.</p>
+                    <a href="#kontakt" class="more">Mehr erfahren <span class="arw">→</span></a>
+                </article>
+                <article class="scard wide rv" style="transition-delay:.08s">
+                    <div class="media"><img src="img/vintage.jpeg" alt="Oldtimer und Vintage-Autos kaufen und verkaufen" loading="lazy" decoding="async"></div>
+                    <span class="scard__no">04</span>
+                    <h3 class="h-3">Oldtimer &amp; Vintage</h3>
+                    <p>Für Sammler und Enthusiasten: Wir kaufen und verkaufen Vintage-Autos und bringen Liebhaber zusammen.</p>
+                    <a href="#kontakt" class="more">Sprechen wir <span class="arw">→</span></a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section id="ablauf" class="pad light">
+        <div class="wrap">
+            <div class="sec-head rv">
+                <div class="sec-head__t">
+                    <span class="eyebrow">Der Ablauf</span>
+                    <h2 class="h-2">In 3 Schritten zum Bargeld</h2>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="service-item">
-                        <i class="icon icon-document"></i>
-                        <h3>Hassle-Free Autoverkauf</h3>
-                        <p>Überlassen Sie uns die Papierarbeit! Wir kümmern uns um die Abmeldung und Ummeldung des
-                            Autos, damit Sie sich um nichts kümmern müssen.</p>
-                    </div>
+                <p>Vom ersten Kontakt bis zur Auszahlung — oft am selben Tag.</p>
+            </div>
+            <div class="steps rv">
+                <div class="step">
+                    <div class="step__n"></div>
+                    <span class="badge">2 Min.</span>
+                    <h3>Offerte anfragen</h3>
+                    <p>Formular ausfüllen oder anrufen. Sie erhalten eine unverbindliche Preiseinschätzung.</p>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="service-item">
-                        <i class="icon icon-phone"></i>
-                        <h3>Verkaufen Sie Ihr Auto mit Leichtigkeit!</h3>
-                        <p>Sagen Sie Stress und Aufwand beim Autoverkauf ade! Lassen Sie uns alles für Sie erledigen.
-                        </p>
-                    </div>
+                <div class="step">
+                    <div class="step__n"></div>
+                    <span class="badge">Kostenlos</span>
+                    <h3>Wir kommen zu Ihnen</h3>
+                    <p>Wir begutachten das Fahrzeug bei Ihnen vor Ort — schweizweit, zu Ihrer Wunschzeit.</p>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="service-item">
-                        <span class="icon icon-ship"></span>
-                        <h3>Erleben Sie den globalen Autohandel!</h3>
-                        <p>LMöchten Sie ein Auto in die Schweiz importieren oder exportieren? Wir haben Sie abgedeckt!
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="service-item">
-                        <i class="icon icon-accident"></i>
-                        <h3>Lassen Sie sich nicht durch einen Unfall aufhalten!</h3>
-                        <p>Unfälle passieren. Wenn Ihr Auto in einen Unfall verwickelt war, kaufen wir es Ihnen ab, ohne
-                            Fragen zu stellen.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="service-item">
-                        <i class="icon icon-car"></i>
-                        <h3>Fahren Sie heute Ihr Traumauto!</h3>
-                        <p>Wir verkaufen hochwertige Autos und bieten Probefahrten an, damit Sie das perfekte Fahrzeug
-                            für sich finden können.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="service-item">
-                        <i class="icon icon-person"></i>
-                        <h3>Wir kommen zu Ihnen!</h3>
-                        <p>Machen Sie sich keine Sorgen darüber, Ihr Auto zu uns zu transportieren. Wir kümmern uns um
-                            die Abholung und machen den Auto-Kaufprozess für Sie noch einfacher.</p>
-                    </div>
+                <div class="step">
+                    <div class="step__n"></div>
+                    <span class="badge">Sofort</span>
+                    <h3>Bargeld &amp; fertig</h3>
+                    <p>Fairer Preis, Auszahlung in bar, Ab- und Ummeldung erledigen wir. Sie sind sorgenfrei.</p>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Service End -->
+    </section>
 
-
-    <!-- Facts Start -->
-    <div id="servicepoints" class="facts" data-parallax="scroll" data-image-src="img/facts.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="facts-item">
-                        <i class="fa fa-map-marker-alt"></i>
-                        <div class="facts-text">
-                            <h3 data-toggle="counter-up">2</h3>
-                            <p>Servicepunkte</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="facts-item">
-                        <i class="fa fa-user"></i>
-                        <div class="facts-text">
-                            <h3 data-toggle="counter-up">25</h3>
-                            <p>Erfahrungsjahre </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="facts-item">
-                        <i class="fa fa-users"></i>
-                        <div class="facts-text">
-                            <h3 data-toggle="counter-up">1500</h3>
-                            <p>Zufriedene Kunden</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="facts-item">
-                        <i class="fa fa-check"></i>
-                        <div class="facts-text">
-                            <h3 data-toggle="counter-up">5000</h3>
-                            <p>Projekte abgeschlossen</p>
-                        </div>
-                    </div>
-                </div>
+    <!-- Stats -->
+    <section class="pad">
+        <div class="wrap">
+            <div class="stats rv">
+                <div class="stat"><b><span class="s" data-count="25">0</span></b><span>Jahre Erfahrung</span></div>
+                <div class="stat"><b><span data-count="1500" data-suffix="+">0</span></b><span>Zufriedene Kunden</span></div>
+                <div class="stat"><b><span data-count="5000" data-suffix="+">0</span></b><span>Abgeschlossene Deals</span></div>
+                <div class="stat"><b><span class="s">24/7</span></b><span>Für Sie erreichbar</span></div>
             </div>
         </div>
-    </div>
-    <!-- Facts End -->
+    </section>
 
-    <!-- Team Start -->
-    <div id="partner" class="team">
-        <div class="container">
-            <div class="section-header text-center">
-                <p>Lernen Sie unsere Partner kennen</p>
-                <h2>Unternehmen, mit denen wir zusammenarbeiten</h2>
+    <!-- Testimonials + Partners -->
+    <section id="stimmen" class="pad light">
+        <div class="wrap">
+            <div class="sec-head rv">
+                <div class="sec-head__t">
+                    <span class="eyebrow">Kundenstimmen</span>
+                    <h2 class="h-2">Was unsere Kunden sagen</h2>
+                </div>
+                <p>Echte Bewertungen von Verkäufern und Käufern aus der ganzen Schweiz.</p>
             </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="img/partner-1.jpeg" alt="Team Image">
-                        </div>
-                        <div class="team-text">
-                            <h2>Quality 1</h2>
-                            <p>Für Fahrzeuggarantien</p>
-                            <div class="team-social">
-                                <a href="https://www.facebook.com/Quality1Garantie/"><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a href="https://ch.linkedin.com/company/quality1-ag"><i
-                                        class="fab fa-linkedin-in"></i></a>
-                                <a href="https://quality1.ch"><i class="fa fa-globe"></i></a>
-                            </div>
-                        </div>
-                    </div>
+            <div class="tgrid rv">
+                <div class="tcard">
+                    <span class="stars"><iconify-icon class="ico" icon="tabler:star-filled" aria-hidden="true"></iconify-icon><iconify-icon class="ico" icon="tabler:star-filled" aria-hidden="true"></iconify-icon><iconify-icon class="ico" icon="tabler:star-filled" aria-hidden="true"></iconify-icon><iconify-icon class="ico" icon="tabler:star-filled" aria-hidden="true"></iconify-icon><iconify-icon class="ico" icon="tabler:star-filled" aria-hidden="true"></iconify-icon></span>
+                    <p>Ich suchte 3 Monate lang nach einem Auto und reiste von weit her. Alle Angaben waren korrekt — und ich kaufte das Auto. Sehr zufrieden mit dem Autokauf bei Auto Wiss. Vielen Dank, Mike!</p>
+                    <div class="who"><span class="media"><img src="img/polo.png" alt="Kunde Polo Looser" loading="lazy"></span><div><b>Polo Looser</b><span>Käufer</span></div></div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="img/partner-2.jpeg" alt="Team Image">
-                        </div>
-                        <div class="team-text">
-                            <h2>OPTIMA</h2>
-                            <p>Batteerien</p>
-                            <div class="team-social">
-                                <a href="https://www.facebook.com/optimabatteries/"><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a href="https://www.linkedin.com/company/optima-batteries/"><i
-                                        class="fab fa-linkedin-in"></i></a>
-                                <a href="https://www.optimabatteries.com"><i class="fa fa-globe"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="tcard">
+                    <span class="stars"><iconify-icon class="ico" icon="tabler:star-filled" aria-hidden="true"></iconify-icon><iconify-icon class="ico" icon="tabler:star-filled" aria-hidden="true"></iconify-icon><iconify-icon class="ico" icon="tabler:star-filled" aria-hidden="true"></iconify-icon><iconify-icon class="ico" icon="tabler:star-filled" aria-hidden="true"></iconify-icon><iconify-icon class="ico" icon="tabler:star-filled" aria-hidden="true"></iconify-icon></span>
+                    <p>Ich würde sie sofort wieder anrufen, wenn ich ein anderes Auto hätte! Toller Service und sehr nette Leute!</p>
+                    <div class="who"><span class="media"><img src="img/paul.png" alt="Kunde Paul Rainyn" loading="lazy"></span><div><b>Paul Rainyn</b><span>Google Local Guide</span></div></div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="img/partner-3.jpeg" alt="Team Image">
-                        </div>
-                        <div class="team-text">
-                            <h2>VARTA</h2>
-                            <p>Batteerien</p>
-                            <div class="team-social">
-                                <a href="https://www.varta-automotive.com/en-gb"><i class="fab fa-facebook-f"></i></a>
-                                <a href="https://www.facebook.com/Varta.AG/"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="https://quality1.ch"><i class="fa fa-globe"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="tcard">
+                    <span class="stars"><iconify-icon class="ico" icon="tabler:star-filled" aria-hidden="true"></iconify-icon><iconify-icon class="ico" icon="tabler:star-filled" aria-hidden="true"></iconify-icon><iconify-icon class="ico" icon="tabler:star-filled" aria-hidden="true"></iconify-icon><iconify-icon class="ico" icon="tabler:star-filled" aria-hidden="true"></iconify-icon><iconify-icon class="ico" icon="tabler:star-filled" aria-hidden="true"></iconify-icon></span>
+                    <p>Eine sehr persönliche Atmosphäre, unkompliziert und sehr kompetent. Das Personal ist sehr freundlich und hilfsbereit. Immer wieder zu Wiss. Danke!</p>
+                    <div class="who"><span class="media"><img src="img/geri.png" alt="Kunde Geri Andenmatten" loading="lazy"></span><div><b>Geri Andenmatten</b><span>Kunde</span></div></div>
                 </div>
+                <div class="tcard">
+                    <span class="stars"><iconify-icon class="ico" icon="tabler:star-filled" aria-hidden="true"></iconify-icon><iconify-icon class="ico" icon="tabler:star-filled" aria-hidden="true"></iconify-icon><iconify-icon class="ico" icon="tabler:star-filled" aria-hidden="true"></iconify-icon><iconify-icon class="ico" icon="tabler:star-filled" aria-hidden="true"></iconify-icon><iconify-icon class="ico" icon="tabler:star-filled" aria-hidden="true"></iconify-icon></span>
+                    <p>Super Händler. War sehr entgegenkommend beim Verkauf. Konnten uns schnell und problemlos auf einen guten Preis einigen. Sehr empfehlenswert!</p>
+                    <div class="who"><span class="media"><img src="img/sabreena.png" alt="Kundin Sabrina Huber" loading="lazy"></span><div><b>Sabrina Huber</b><span>Verkäuferin</span></div></div>
+                </div>
+            </div>
+
+            <div class="sec-head rv" style="margin-top:4rem">
+                <div class="sec-head__t"><span class="eyebrow">Partner</span><h2 class="h-3">Unternehmen, mit denen wir arbeiten</h2></div>
+            </div>
+            <div class="partners rv">
+                <a class="pcard" href="https://quality1.ch" target="_blank" rel="noopener"><span class="pcard__logo media on-light"><img src="img/partner-1.jpeg" alt="Quality 1 – Fahrzeuggarantien" loading="lazy"></span><div><b>Quality 1</b><span>Fahrzeuggarantien</span></div></a>
+                <a class="pcard" href="https://www.optimabatteries.com" target="_blank" rel="noopener"><span class="pcard__logo media on-light"><img src="img/partner-2.jpeg" alt="OPTIMA Batteries" loading="lazy"></span><div><b>Optima</b><span>Batterien</span></div></a>
+                <a class="pcard" href="https://www.varta-automotive.com/en-gb" target="_blank" rel="noopener"><span class="pcard__logo media on-light"><img src="img/partner-3.jpeg" alt="VARTA" loading="lazy"></span><div><b>Varta</b><span>Batterien</span></div></a>
             </div>
         </div>
-    </div> -->
-    <!-- Team End
+    </section>
 
-
-    <!-- Testimonial Start -->
-    <div class="testimonial">
-        <div class="container">
-            <div class="section-header text-center">
-                <p>Kundenstimmen</p>
-                <h2>Was Unsere Kunden Sagen</h2>
+    <!-- CTA -->
+    <section class="cta pad" id="kontakt">
+        <div class="wrap cta__in">
+            <div class="rv">
+                <span class="eyebrow">Verkaufen Sie noch heute</span>
+                <h2 class="h-2">Machen Sie Ihr Auto zu Bargeld.</h2>
+                <p>Fordern Sie jetzt Ihre kostenlose, unverbindliche Offerte an — oder rufen Sie direkt an. Wir sind rund um die Uhr für Sie da.</p>
             </div>
-            <div class="owl-carousel testimonials-carousel">
-                <div class="testimonial-item">
-                    <img src="img/polo.png" alt="Image">
-                    <div class="testimonial-text">
-                        <h3>Polo Looser</h3>
-                        <!-- <h4>Profession</h4> -->
-                        <p>
-                            Ich suchte 3 Monate lang nach einem Auto und reiste von weit her, um mir das Auto von Auto
-                            Wiss anzusehen. Alle Angaben waren korrekt - und ich kaufte das Auto. Sehr zufrieden mit dem
-                            Autokauf bei Auto Wiss - vielen Dank, Mike. Herzliche Grüße, Polo.
-                        </p>
-                    </div>
-                </div>
-                <div class="testimonial-item">
-                    <img src="img/paul.png" alt="Image">
-                    <div class="testimonial-text">
-                        <h3>Paul Rainyn</h3>
-                        <h4>Google Local Guide</h4>
-                        <p>
-                            Ich würde sie sofort wieder anrufen, wenn ich ein anderes Auto hätte! Toller Service und
-                            sehr nette Leute!
-                        </p>
-                    </div>
-                </div>
-                <div class="testimonial-item">
-                    <img src="img/geri.png" alt="Image">
-                    <div class="testimonial-text">
-                        <h3>Geri Andenmatten</h3>
-                        <!-- <h4>Profession</h4> -->
-                        <p>
-                            Eine sehr persönliche Atmospäre, unkompliziert und sehr kompetent. Das Personal ist sehr
-                            freundlich und hilfsbereit.
-                            <br> Immer wieder zu Wiss.
-                            <br> Danke.
-                        </p>
-                    </div>
-                </div>
-                <div class="testimonial-item">
-                    <img src="img/sabreena.png" alt="Image">
-                    <div class="testimonial-text">
-                        <h3>Sabrina Huber</h3>
-                        <!-- <h4>Google Local Guide</h4> -->
-                        <p>
-                            Super Händler. War sehr entgegenkommend beim Verkauf.<br>
-                            Konnten uns schnell und problemlos auf einen guten Preis einigen. Sehr empfehlenswert
-                        </p>
-                    </div>
-                </div>
+            <div class="cta__acts rv" style="transition-delay:.08s">
+                <a href="offerte.html" class="btn btn--dark">Kostenlose Offerte erhalten <span class="arw">→</span></a>
+                <a href="tel:+41789008888" class="phone"><iconify-icon class="ico" icon="tabler:phone" aria-hidden="true"></iconify-icon> 078 900 88 88</a>
+                <a href="mailto:info@auto-wiss.ch" class="mailto">info@auto-wiss.ch</a>
             </div>
         </div>
-    </div>
-    <!-- Testimonial End -->
+    </section>
 
-    <!-- Footer Start -->
-    <div id="footer" class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12">
-                    <div class="footer-contact">
-                        <h2>Kontaktiere uns</h2>
-                        <p><i class="fa fa-phone-alt"></i>+41 78 900 88 88</p>
-                        <p><i class="fa fa-envelope"></i>info@auto-wiss.ch</p>
-                        <div class="footer-social">
-                            <!-- <a class="btn" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn" href=""><i class="fab fa-facebook-f"></i></a> -->
-                            <a class="btn" href="https://www.youtube.com/channel/UCV42KtFRrKarhmBEW4Ojwgg"><i
-                                    class="fab fa-youtube"></i></a>
-                            <!-- <a class="btn" href=""><i class="fab fa-instagram"></i></a>
-                                <a class="btn" href=""><i class="fab fa-linkedin-in"></i></a> -->
-                            <a class="btn" href="https://wa.me/+41789008888"><i class="fab fa-whatsapp"></i></a>
-                        </div>
+    <!-- Footer -->
+    <footer class="site-foot">
+        <div class="wrap">
+            <div class="foot">
+                <div>
+                    <span class="brand__name">AUTO<span class="acid">WISS</span></span>
+                    <p>Autoankauf, Export und Verkauf in der ganzen Schweiz. Wir kaufen Ihr Auto in jedem Zustand — sofort Bargeld, keine Umstände.</p>
+                    <div class="socials">
+                        <a href="https://wa.me/+41789008888" aria-label="WhatsApp" title="WhatsApp" target="_blank" rel="noopener"><iconify-icon icon="tabler:brand-whatsapp" aria-hidden="true"></iconify-icon></a>
+                        <a href="https://www.youtube.com/channel/UCV42KtFRrKarhmBEW4Ojwgg" aria-label="YouTube" title="YouTube" target="_blank" rel="noopener"><iconify-icon icon="tabler:brand-youtube" aria-hidden="true"></iconify-icon></a>
                     </div>
                 </div>
+                <div>
+                    <h4>Navigation</h4>
+                    <a class="f" href="#warum">Warum Auto Wiss</a>
+                    <a class="f" href="#leistungen">Leistungen</a>
+                    <a class="f" href="#ablauf">Ablauf</a>
+                    <a class="f" href="#stimmen">Kundenstimmen</a>
+                    <a class="f" href="offerte.html">Offerte erhalten</a>
+                </div>
+                <div>
+                    <h4>Kontakt</h4>
+                    <a class="f" href="https://maps.google.com/?q=Auto+Wiss+Kantonsstrasse+7+6232+Geuensee" target="_blank" rel="noopener">Kantonsstrasse 7, 6232 Geuensee</a>
+                    <a class="f" href="tel:+41789008888">+41 78 900 88 88</a>
+                    <a class="f" href="mailto:info@auto-wiss.ch">info@auto-wiss.ch</a>
+                    <a class="f" href="offerte.html">Öffnungszeiten: 24/7</a>
+                </div>
+            </div>
+            <div class="foot__bar">
+                <span>© <span id="yr">2026</span> Auto Wiss — Alle Rechte vorbehalten</span>
+                <span>Geuensee · Luzern · Schweiz</span>
             </div>
         </div>
-        <div class="container copyright">
-            <p>&copy; <a href="#">autowiss.ch</a>, Alle Rechte vorbehalten.</p>
-        </div>
-    </div>
-    <!-- Footer End -->
-    <!-- Back to top button -->
-    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    </footer>
 
-    <!-- Pre Loader -->
-    <div id="loader" class="show">
-        <div class="loader"></div>
-    </div>
+    <a class="wa" href="https://wa.me/+41789008888" target="_blank" rel="noopener" aria-label="WhatsApp Chat" title="WhatsApp Chat"><iconify-icon icon="tabler:brand-whatsapp" aria-hidden="true"></iconify-icon></a>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
 
-    <!-- Contact Javascript File -->
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-    <script>
-        // Smooth scroll behavior on all internal links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-    </script>
+    <script src="js/site.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <title>Offerte erhalten – Auto Wiss</title>
+    <link rel="icon" href="img/icon.webp">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="description" content="Holen Sie sich jetzt eine unverbindliche Offerte für Ihr Fahrzeug – schweizweit, mit Bewertung, Bezahlung und Mitnahme am gleichen Tag.">
+    <meta name="theme-color" content="#0E1A30">
+    <meta name="robots" content="noindex">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,600&display=swap" rel="stylesheet">
+    <link href="css/wyss.css" rel="stylesheet">
+
+    <style>
+        .book-hero { padding: clamp(2.5rem, 6vw, 4rem) 0 0; position: relative; }
+        .book-hero__glow { position: absolute; top: -20%; right: -10%; width: 55vw; height: 55vw; max-width: 640px; background: radial-gradient(circle, rgba(228,251,80,0.13), transparent 62%); pointer-events: none; }
+        .book-hero .wrap { position: relative; }
+        .book-hero .eyebrow { display: block; margin-bottom: 1.1rem; }
+        .book-hero h1 { max-width: 16ch; }
+        .book-hero p { max-width: 48ch; margin-top: 1.2rem; }
+        .assur { display: flex; flex-wrap: wrap; gap: 0.8rem 1.8rem; margin-top: 1.8rem; }
+        .assur div { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--f-label); font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.04em; color: #cfd4de; }
+        .assur .ico { font-size: 1.05em; color: var(--acid); }
+
+        .form-wrap { padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(4rem, 8vw, 6rem); }
+        .card { background: var(--paper); color: var(--ink); border-radius: 12px; padding: clamp(1.6rem, 4vw, 3rem); box-shadow: 0 30px 60px rgba(0,0,0,0.25); }
+        .fieldset { border: 0; padding: 0; margin: 0; }
+        .fieldset + .fieldset { margin-top: 2.5rem; padding-top: 2.5rem; border-top: 1px solid var(--line-ink); }
+        .fieldset__head { display: flex; align-items: baseline; gap: 0.8rem; margin-bottom: 1.6rem; }
+        .fieldset__head .n { font-family: var(--f-label); font-size: 0.8rem; color: var(--steel-2); }
+        .fieldset__head h2 { font-family: var(--f-display); font-size: clamp(1.5rem, 3vw, 2.1rem); text-transform: uppercase; color: var(--ink); }
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem 1.3rem; }
+        .field { display: flex; flex-direction: column; gap: 0.4rem; }
+        .field.full { grid-column: 1 / -1; }
+        .field label { font-family: var(--f-label); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--steel-2); }
+        .field label .req { color: #D64524; }
+        .field input, .field select, .field textarea {
+            font-family: var(--f-body); font-size: 0.98rem; color: var(--ink);
+            background: #fff; border: 1.5px solid var(--line-ink); border-radius: 6px;
+            padding: 0.8rem 0.9rem; width: 100%; transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .field textarea { min-height: 120px; resize: vertical; }
+        .field select { appearance: none; -webkit-appearance: none; cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%230E1A30' d='M6 8 0 0h12z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 0.9rem center; padding-right: 2.2rem; }
+        .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px rgba(228,251,80,0.45); }
+        .field input:invalid:not(:placeholder-shown) { border-color: #E88; }
+        .hp { position: absolute; left: -9999px; opacity: 0; }
+        .form-foot { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+        .req-hint { font-family: var(--f-label); font-size: 0.72rem; color: var(--steel-2); }
+        .submit { width: 100%; padding: 1.15rem; font-size: 0.9rem; }
+        .form-msg { display: none; padding: 1rem 1.2rem; border-radius: 6px; font-size: 0.92rem; }
+        .form-msg.show { display: block; }
+        .form-msg.err { background: #FDEBE7; color: #B23214; border: 1px solid #F3C4B8; }
+
+        @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-head" id="top">
+        <div class="wrap nav">
+            <a href="index.html" class="brand" aria-label="Auto Wiss Startseite">
+                <span class="brand__mark">W</span>
+                <span class="brand__name">AUTO<span>WISS</span></span>
+            </a>
+            <nav class="nav__links" id="menu">
+                <a href="index.html#warum" class="lnk">Warum Wiss</a>
+                <a href="index.html#leistungen" class="lnk">Leistungen</a>
+                <a href="index.html#ablauf" class="lnk">Ablauf</a>
+                <a href="index.html#kontakt" class="lnk">Kontakt</a>
+                <a href="tel:+41789008888" class="btn btn--ghost">078 900 88 88</a>
+            </nav>
+            <button class="burger" id="burger" aria-label="Menü öffnen" title="Menü" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <!-- Page hero -->
+    <section class="book-hero">
+        <div class="book-hero__glow"></div>
+        <div class="wrap">
+            <span class="eyebrow">Kostenlose Offerte</span>
+            <h1 class="h-hero">Was ist Ihr Auto wert?</h1>
+            <p class="lead">Füllen Sie die Fahrzeugdaten aus — Sie erhalten eine unverbindliche Offerte.
+                Schweizweiter Service mit Bewertung, Bezahlung und Mitnahme am gleichen Tag.</p>
+            <div class="assur">
+                <div><iconify-icon class="ico" icon="tabler:check" aria-hidden="true"></iconify-icon> 100 % unverbindlich</div>
+                <div><iconify-icon class="ico" icon="tabler:check" aria-hidden="true"></iconify-icon> Kostenlos &amp; schweizweit</div>
+                <div><iconify-icon class="ico" icon="tabler:check" aria-hidden="true"></iconify-icon> Antwort meist am selben Tag</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form -->
+    <section class="form-wrap">
+        <div class="wrap" style="max-width:900px">
+            <div class="card">
+                <form id="quoteForm" action="https://formspree.io/f/xeezdgln" method="POST" novalidate>
+
+                    <fieldset class="fieldset">
+                        <div class="fieldset__head"><span class="n">01</span><h2>Angaben zum Fahrzeug</h2></div>
+                        <div class="grid">
+                            <div class="field full">
+                                <label for="marke">Marke &amp; Typ <span class="req">*</span></label>
+                                <input type="text" id="marke" name="Marke_und_Typ" placeholder="z. B. VW Golf 1.4 TSI" required>
+                            </div>
+                            <div class="field">
+                                <label for="aufbauart">Aufbauart <span class="req">*</span></label>
+                                <select id="aufbauart" name="Aufbauart" required>
+                                    <option value="" disabled selected>Bitte wählen</option>
+                                    <option>Limousine</option><option>Kombi</option><option>SUV</option>
+                                    <option value="Coupe">Coupé</option><option>Cabriolet</option>
+                                    <option>Pick-up</option><option value="Van/Kleinbus">Van/Kleinbus</option><option>Andere</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label for="treibstoff">Treibstoffart <span class="req">*</span></label>
+                                <select id="treibstoff" name="Treibstoff" required>
+                                    <option value="" disabled selected>Bitte wählen</option>
+                                    <option>Benzin</option><option>Diesel</option><option>Elektro</option>
+                                    <option>Hybrid</option><option>Gas</option><option>Andere</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label for="getriebe">Getriebeart <span class="req">*</span></label>
+                                <select id="getriebe" name="Getriebe" required>
+                                    <option value="" disabled selected>Bitte wählen</option>
+                                    <option>Automatik</option><option>Schaltgetriebe</option><option>Halbautomatik</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label for="inverkehrsetzung">1. Inverkehrsetzung <span class="req">*</span></label>
+                                <input type="text" id="inverkehrsetzung" name="Inverkehrsetzung" placeholder="z. B. 06.2018" required>
+                            </div>
+                            <div class="field">
+                                <label for="kilometerstand">Kilometerstand <span class="req">*</span></label>
+                                <input type="text" id="kilometerstand" name="Kilometerstand" placeholder="z. B. 85’000 km" required>
+                            </div>
+                            <div class="field">
+                                <label for="farbe">Farbe</label>
+                                <input type="text" id="farbe" name="Farbe" placeholder="z. B. Schwarz met.">
+                            </div>
+                            <div class="field">
+                                <label for="typengenehmigung">Typengenehmigung</label>
+                                <input type="text" id="typengenehmigung" name="Typengenehmigung" placeholder="optional">
+                            </div>
+                            <div class="field">
+                                <label for="hubraum">Hubraum</label>
+                                <input type="text" id="hubraum" name="Hubraum" placeholder="z. B. 1’395 cm³">
+                            </div>
+                            <div class="field">
+                                <label for="tueren">Anzahl Türen</label>
+                                <input type="text" id="tueren" name="Anzahl_Tueren" placeholder="z. B. 5">
+                            </div>
+                            <div class="field">
+                                <label for="pruefung">Letzte Prüfung (MFK)</label>
+                                <input type="text" id="pruefung" name="MFK_Pruefung" placeholder="z. B. 2024">
+                            </div>
+                            <div class="field">
+                                <label for="preis">Preisvorstellung</label>
+                                <input type="text" id="preis" name="Preisvorstellung" placeholder="z. B. CHF 9’000">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="fieldset">
+                        <div class="fieldset__head"><span class="n">02</span><h2>Angaben zum Fahrzeughalter</h2></div>
+                        <div class="grid">
+                            <div class="field">
+                                <label for="name">Name <span class="req">*</span></label>
+                                <input type="text" id="name" name="Name" placeholder="Nachname" required>
+                            </div>
+                            <div class="field">
+                                <label for="vorname">Vorname <span class="req">*</span></label>
+                                <input type="text" id="vorname" name="Vorname" placeholder="Vorname" required>
+                            </div>
+                            <div class="field">
+                                <label for="plz_ort">PLZ / Ort <span class="req">*</span></label>
+                                <input type="text" id="plz_ort" name="PLZ_Ort" placeholder="z. B. 6232 Geuensee" required>
+                            </div>
+                            <div class="field">
+                                <label for="strasse">Strasse</label>
+                                <input type="text" id="strasse" name="Strasse" placeholder="Strasse &amp; Nr.">
+                            </div>
+                            <div class="field">
+                                <label for="telefon">Telefon <span class="req">*</span></label>
+                                <input type="tel" id="telefon" name="Telefon" placeholder="078 000 00 00" required>
+                            </div>
+                            <div class="field">
+                                <label for="email">E-Mail</label>
+                                <input type="email" id="email" name="Email" placeholder="name@beispiel.ch">
+                            </div>
+                            <div class="field full">
+                                <label for="bemerkungen">Bemerkungen</label>
+                                <textarea id="bemerkungen" name="Bemerkungen" placeholder="Zusätzliche Informationen zum Fahrzeug (Schäden, Ausstattung, …)"></textarea>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- honeypot spam trap -->
+                    <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+                    <div class="form-foot">
+                        <p class="req-hint"><span style="color:#D64524">*</span> = erforderliche Eingabefelder</p>
+                        <div class="form-msg err" id="formMsg" role="alert"></div>
+                        <button class="btn submit" type="submit" id="sendBtn">Offerte absenden →</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-foot">
+        <div class="wrap">
+            <div class="foot">
+                <div>
+                    <span class="brand__name">AUTO<span class="acid">WISS</span></span>
+                    <p>Autoankauf, Export und Verkauf in der ganzen Schweiz. Wir kaufen Ihr Auto in jedem Zustand — sofort Bargeld, keine Umstände.</p>
+                    <div class="socials">
+                        <a href="https://wa.me/+41789008888" aria-label="WhatsApp" title="WhatsApp" target="_blank" rel="noopener"><iconify-icon icon="tabler:brand-whatsapp" aria-hidden="true"></iconify-icon></a>
+                        <a href="https://www.youtube.com/channel/UCV42KtFRrKarhmBEW4Ojwgg" aria-label="YouTube" title="YouTube" target="_blank" rel="noopener"><iconify-icon icon="tabler:brand-youtube" aria-hidden="true"></iconify-icon></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Navigation</h4>
+                    <a class="f" href="index.html#warum">Warum Auto Wiss</a>
+                    <a class="f" href="index.html#leistungen">Leistungen</a>
+                    <a class="f" href="index.html#ablauf">Ablauf</a>
+                    <a class="f" href="index.html#stimmen">Kundenstimmen</a>
+                </div>
+                <div>
+                    <h4>Kontakt</h4>
+                    <a class="f" href="https://maps.google.com/?q=Auto+Wiss+Kantonsstrasse+7+6232+Geuensee" target="_blank" rel="noopener">Kantonsstrasse 7, 6232 Geuensee</a>
+                    <a class="f" href="tel:+41789008888">+41 78 900 88 88</a>
+                    <a class="f" href="mailto:info@auto-wiss.ch">info@auto-wiss.ch</a>
+                    <a class="f" href="offerte.html">Öffnungszeiten: 24/7</a>
+                </div>
+            </div>
+            <div class="foot__bar">
+                <span>© <span id="yr">2026</span> Auto Wiss — Alle Rechte vorbehalten</span>
+                <span>Geuensee · Luzern · Schweiz</span>
+            </div>
+        </div>
+    </footer>
+
+    <a class="wa" href="https://wa.me/+41789008888" target="_blank" rel="noopener" aria-label="WhatsApp Chat" title="WhatsApp Chat"><iconify-icon icon="tabler:brand-whatsapp" aria-hidden="true"></iconify-icon></a>
+
+    <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+
+    <script src="js/site.js"></script>
+    <script>
+        // Native validation + Formspree submit → danke.html (no jQuery/Bootstrap)
+        (function () {
+            var form = document.getElementById('quoteForm');
+            var btn = document.getElementById('sendBtn');
+            var msg = document.getElementById('formMsg');
+            if (!form) return;
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                msg.classList.remove('show');
+                if (!form.reportValidity()) return;
+                btn.disabled = true;
+                var original = btn.textContent;
+                btn.textContent = 'Wird gesendet …';
+                fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                }).then(function (r) {
+                    if (r.ok) { window.location.href = 'danke.html'; }
+                    else { throw new Error('bad response'); }
+                }).catch(function () {
+                    msg.textContent = 'Es gab ein Problem beim Senden. Bitte versuchen Sie es erneut oder rufen Sie uns an: 078 900 88 88.';
+                    msg.classList.add('show');
+                    btn.disabled = false;
+                    btn.textContent = original;
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>
