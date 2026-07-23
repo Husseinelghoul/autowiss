@@ -1,0 +1,203 @@
+---
+import { Icon } from 'astro-icon/components';
+import '@fontsource/anton/index.css';
+import '@fontsource/archivo/400.css';
+import '@fontsource/archivo/500.css';
+import '@fontsource/archivo/600.css';
+import '@fontsource/archivo/700.css';
+import '@fontsource/archivo/800.css';
+import '@fontsource/archivo/900.css';
+import '../styles/wyss.css';
+import { locations } from '../data/locations.js';
+
+const {
+  title,
+  description,
+  path,                 // canonical path, e.g. "/" or "/offerte.html"
+  noindex = false,
+  ogTitle,
+  ogDescription,
+  ogImage = '/img/agreement.jpeg',
+  header = 'home',      // 'home' | 'inner' | 'minimal'
+  businessSchema = false,
+} = Astro.props;
+
+const site = 'https://autowiss.ch';
+const canonical = new URL(path, site).href;
+const ogUrl = canonical;
+const image = new URL(ogImage, site).href;
+
+// On inner pages the nav anchors point back to the homepage.
+const base = header === 'home' ? '' : 'index.html';
+---
+
+<!DOCTYPE html>
+<html lang="de-CH">
+  <head>
+    <meta charset="utf-8" />
+    <title>{title}</title>
+    <link rel="icon" href="/img/icon.webp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {description && <meta name="description" content={description} />}
+    <meta name="theme-color" content="#0E1A30" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="de-CH" href={canonical} />
+    <link rel="alternate" hreflang="x-default" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+
+    <!-- Open Graph / social sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Auto Wiss" />
+    <meta property="og:locale" content="de_CH" />
+    <meta property="og:title" content={ogTitle ?? title} />
+    {(ogDescription ?? description) && (
+      <meta property="og:description" content={ogDescription ?? description} />
+    )}
+    <meta property="og:url" content={ogUrl} />
+    <meta property="og:image" content={image} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    {businessSchema && (
+      <script
+        type="application/ld+json"
+        set:html={JSON.stringify({
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'Organization',
+              '@id': site + '/#org',
+              name: 'Auto Wiss',
+              url: site + '/',
+              logo: site + '/img/icon.webp',
+              image: site + '/img/agreement.jpeg',
+              email: 'info@auto-wiss.ch',
+              telephone: '+41789008888',
+              sameAs: ['https://www.youtube.com/channel/UCV42KtFRrKarhmBEW4Ojwgg'],
+            },
+            ...locations.map((l) => ({
+              '@type': 'AutoDealer',
+              '@id': site + '/#' + l.id,
+              name: l.name,
+              url: site + '/',
+              image: site + '/img/agreement.jpeg',
+              parentOrganization: { '@id': site + '/#org' },
+              email: 'info@auto-wiss.ch',
+              telephone: '+41789008888',
+              priceRange: '$$',
+              currenciesAccepted: 'CHF',
+              paymentAccepted: 'Cash',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: l.street,
+                postalCode: l.postalCode,
+                addressLocality: l.locality,
+                addressRegion: 'LU',
+                addressCountry: 'CH',
+              },
+              geo: { '@type': 'GeoCoordinates', latitude: l.lat, longitude: l.lon },
+              areaServed: { '@type': 'Country', name: 'Schweiz' },
+              knowsLanguage: ['de-CH', 'de'],
+              openingHoursSpecification: {
+                '@type': 'OpeningHoursSpecification',
+                dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                opens: '00:00',
+                closes: '23:59',
+              },
+              sameAs: ['https://www.youtube.com/channel/UCV42KtFRrKarhmBEW4Ojwgg'],
+            })),
+          ],
+        })}
+      />
+    )}
+
+    <slot name="head" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="site-head" id="top">
+      <div class="wrap nav">
+        <a href={header === 'home' ? '#top' : 'index.html'} class="brand" aria-label="Auto Wiss Startseite">
+          <span class="brand__mark">W</span>
+          <span class="brand__name">Auto <span>Wiss</span></span>
+        </a>
+
+        {header === 'minimal' ? (
+          <div class="nav__cta">
+            <a href="tel:+41789008888" class="btn btn--ghost" style="padding:0.6rem 0.95rem">078 900 88 88</a>
+          </div>
+        ) : (
+          <>
+            <nav class="nav__links" id="menu">
+              <a href={`${base}#warum`} class="lnk">Warum Wiss</a>
+              <a href={`${base}#leistungen`} class="lnk">Leistungen</a>
+              <a href={`${base}#ablauf`} class="lnk">Ablauf</a>
+              {header === 'home' && <a href="#stimmen" class="lnk">Stimmen</a>}
+              <a href={`${base}#kontakt`} class="lnk">Kontakt</a>
+              <a href="tel:+41789008888" class="btn btn--ghost nav__call">078 900 88 88</a>
+              {header === 'home' && <a href="offerte.html" class="btn">Offerte erhalten</a>}
+            </nav>
+            <div class="nav__cta">
+              <a href="tel:+41789008888" class="btn btn--ghost" style="padding:0.6rem 0.95rem">078 900 88 88</a>
+              <button class="burger" id="burger" aria-label="Menü öffnen" title="Menü" aria-expanded="false"><span></span><span></span><span></span></button>
+            </div>
+          </>
+        )}
+      </div>
+    </header>
+
+    <slot />
+
+    {header !== 'minimal' ? (
+      <!-- Footer -->
+      <footer class="site-foot">
+        <div class="wrap">
+          <div class="foot">
+            <div>
+              <span class="brand__name">Auto <span class="acid">Wiss</span></span>
+              <p>Autoankauf, Export und Verkauf in der ganzen Schweiz. Wir kaufen Ihr Auto in jedem Zustand — sofort Bargeld, keine Umstände.</p>
+              <div class="socials">
+                <a href="https://wa.me/+41789008888" aria-label="WhatsApp" title="WhatsApp" target="_blank" rel="noopener"><Icon name="tabler:brand-whatsapp" /></a>
+                <a href="https://www.youtube.com/channel/UCV42KtFRrKarhmBEW4Ojwgg" aria-label="YouTube" title="YouTube" target="_blank" rel="noopener"><Icon name="tabler:brand-youtube" /></a>
+              </div>
+            </div>
+            <div>
+              <h4>Navigation</h4>
+              <a class="f" href={`${base}#warum`}>Warum Auto Wiss</a>
+              <a class="f" href={`${base}#leistungen`}>Leistungen</a>
+              <a class="f" href={`${base}#ablauf`}>Ablauf</a>
+              <a class="f" href={`${base}#stimmen`}>Kundenstimmen</a>
+              <a class="f" href="offerte.html">Offerte erhalten</a>
+            </div>
+            <div>
+              <h4>Standorte</h4>
+              {locations.map((l) => (
+                <a class="f" href={l.maps} target="_blank" rel="noopener">{l.street}, {l.postalCode} {l.locality}</a>
+              ))}
+              <a class="f" href="tel:+41789008888">+41 78 900 88 88</a>
+              <a class="f" href="mailto:info@auto-wiss.ch">info@auto-wiss.ch</a>
+              <a class="f" href="offerte.html">Öffnungszeiten: 24/7</a>
+            </div>
+          </div>
+          <div class="foot__bar">
+            <span>© <span id="yr">2026</span> Auto Wiss — Alle Rechte vorbehalten</span>
+            <span>Geuensee · Wikon · Luzern · Schweiz</span>
+          </div>
+        </div>
+      </footer>
+    ) : (
+      <footer class="site-foot">
+        <div class="wrap">
+          <div class="foot__bar" style="margin-top:0;border-top:0">
+            <span>© <span id="yr">2026</span> Auto Wiss — Alle Rechte vorbehalten</span>
+            <span>Geuensee &amp; Wikon · Luzern · Schweiz</span>
+          </div>
+        </div>
+      </footer>
+    )}
+
+    <a class="wa" href="https://wa.me/+41789008888" target="_blank" rel="noopener" aria-label="WhatsApp Chat" title="WhatsApp Chat"><Icon name="tabler:brand-whatsapp" /></a>
+
+    <script is:inline src="/js/site.js"></script>
+  </body>
+</html>

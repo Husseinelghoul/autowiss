@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://autowiss.ch/sitemap.xml
